@@ -52,3 +52,12 @@ npm run dev
 ```
 
 The app should now be running on `http://localhost:5173`.
+
+## 🧠 Challenges Faced & Solutions
+
+1. **CORS Errors & API Integration:** Initially faced `ECONNREFUSED` and CORS issues while connecting the Vite React frontend with the Express backend. 
+**Solution:** Configured the `cors` middleware properly in Express and ensured Axios requests matched the exact backend port.
+2. **Vite Silent Blank Screen:** Encountered an issue where the React app rendered a blank white screen with no console errors due to mismatched export/import names and cached files. 
+**Solution:** Fixed component file names (e.g., `TodoForms` to `TodoForm`), corrected `index.js` exports, and did a hard restart of the Vite development server to clear the cache.
+3. **State Synchronization:** Handling the difference between the local state `id` and MongoDB's auto-generated `_id`. 
+**Solution:** Refactored the frontend state management and Context API to strictly use `_id` and `isCompleted` to match the Mongoose schema perfectly.
