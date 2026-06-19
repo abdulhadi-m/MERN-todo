@@ -10,7 +10,7 @@ function App() {
   // bringing todos frm server
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:8081/todo");
+      const response = await axios.get("https://mern-todo-mkb4.onrender.com/todo");
       if (response.data.success) {
         setTodos(response.data.data);
       }
@@ -22,7 +22,7 @@ function App() {
   // adding new todos
   const addTodo = async (todo) => {
     try {
-      const response = await axios.post("http://localhost:8081/todo", { data: todo });
+      const response = await axios.post("https://mern-todo-mkb4.onrender.com/todo", { data: todo });
       if (response.data.success) {
         setTodos((prev) => [response.data.data, ...prev]);
       }
@@ -34,7 +34,7 @@ function App() {
   // updating todo
   const updateTodo = async (id, updatedTodo) => {
     try {
-      const response = await axios.put(`http://localhost:8081/todo/${id}`, { data: updatedTodo });
+      const response = await axios.put(`https://mern-todo-mkb4.onrender.com/todo/${id}`, { data: updatedTodo });
       if (response.data.success) {
         setTodos((prev) => prev.map((prevTodo) => (prevTodo._id === id ? response.data.data : prevTodo)));
       }
@@ -46,7 +46,7 @@ function App() {
   // del todo by id
   const deleteTodo = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:8081/todo/${id}`);
+      const response = await axios.delete(`https://mern-todo-mkb4.onrender.com/todo/${id}`);
       if (response.data.success) {
         setTodos((prev) => prev.filter((todo) => todo._id !== id));
       }
@@ -61,7 +61,7 @@ function App() {
     if (!todoToToggle) return;
 
     try {
-      const response = await axios.put(`http://localhost:8081/todo/${id}`, {
+      const response = await axios.put(`https://mern-todo-mkb4.onrender.com/todo/${id}`, {
         data: { isCompleted: !todoToToggle.isCompleted }
       });
       if (response.data.success) {
