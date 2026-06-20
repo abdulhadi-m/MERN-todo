@@ -1,6 +1,6 @@
 const express = require('express')
 
-const {getAllTodos, createTodo, updateTodo, getSingleTodo, deleteTodo} = require('../controllers/todo-controller')
+const {getAllTodos, createTodo, updateTodo, getSingleTodo, deleteTodo, searchTodo} = require('../controllers/todo-controller')
 
 // did this intentionally to avoid confusion
 const routerr = express.Router();
@@ -28,6 +28,8 @@ routerr.get('/', getAllTodos)
 routerr.post('/', createTodo)
 
 
+
+routerr.get('/search', searchTodo)
 /**
  * Route: /todos/:id
  * Method: PUT

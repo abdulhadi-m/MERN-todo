@@ -108,3 +108,18 @@ exports.deleteTodo = async(req,res)=>{
         message: "Todo Deleted Successfully"
     })
 }
+
+exports.searchTodo = async (req, res) => {
+    try {
+        const searchQuery = req.query.q; 
+        
+        // FIX: Todo ki jagah todoModel aayega
+        const todos = await todoModel.find({ 
+            todo: { $regex: searchQuery, $options: 'i' } 
+        });
+        
+        res.status(200).json({ success: true, data: todos });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
